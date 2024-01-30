@@ -4,3 +4,8 @@ version = "0.1.0"
 
 [lib]
 crate-type = ["staticlib"]
+
+[dependencies]
+oxiri = "0.2.3-alpha.1"
+oxrdf = "0.2.0-alpha.2"
+oxttl = "0.1.0-alpha.2"
