@@ -3,7 +3,7 @@ name = "some_rust_lib"
 version = "0.1.0"
 
 [lib]
-crate-type = ["staticlib"]
+crate-type = ["cdylib"]
 
 [dependencies]
 oxiri = "0.2.3-alpha.1"
