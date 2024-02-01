@@ -6,6 +6,10 @@ version = "0.1.0"
 crate-type = ["cdylib"]
 
 [dependencies]
+cxx = "1.0.115"
+ffi-convert = "0.6.1"
+lean-sys = "0.0.5"
 oxiri = "0.2.3-alpha.1"
 oxrdf = "0.2.0-alpha.2"
+oxrdfio = "0.1.0-alpha.2"
 oxttl = "0.1.0-alpha.2"

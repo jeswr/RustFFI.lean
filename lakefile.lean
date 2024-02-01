@@ -10,6 +10,17 @@ lean_exe ffi where
 def ffiC := "ffi.c"
 def ffiO := "ffi.o"
 
+target ffi.o pkg : FilePath := do
+  let oFile := pkg.buildDir / "c" / "ffi.o"
+  let srcJob ← inputFile <| pkg.dir / "c" / "ffi.cpp"
+  let weakArgs := #["-I", (← getLeanIncludeDir).toString]
+  buildO "ffi.cpp" oFile srcJob weakArgs #["-fPIC"] "c++" getLeanTrace
+
+extern_lib libleanffi pkg := do
+  let name := nameToStaticLib "leanffi"
+  let ffiO ← fetch <| pkg.target ``ffi.o
+  buildLeanSharedLib (pkg.nativeLibDir / name) #[ffiO]
+
 target importTarget (pkg : NPackage _package.name) : FilePath := do
   let oFile := pkg.buildDir / ffiO
   let srcJob ← inputFile ffiC
